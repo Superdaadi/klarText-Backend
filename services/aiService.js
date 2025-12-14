@@ -39,6 +39,7 @@ export async function generateAITextFromAudio(pathToAudio) {
       }
 
       try {
+        
         // 1. Split the stdout into individual lines
         const lines = stdout.trim().split('\n');
 
@@ -46,7 +47,6 @@ export async function generateAITextFromAudio(pathToAudio) {
         const lastLine = lines[lines.length - 1];
 
         // 3. Apply the regex to the single line to remove the timestamp
-        //    (Regex: /^.*\]\s*/ removes everything from the start up to and including ']')
         const finalTranscribedText = lastLine.replace(/^.*\]\s*/, '').trim();
 
 
