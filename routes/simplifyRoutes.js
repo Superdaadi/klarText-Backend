@@ -1,10 +1,12 @@
 import express from 'express';
-import { generateAIResponseController } from '../controllers/simplifyController.js';
+import { generateAIResponse, generateSimplifyResponse } from '../controllers/simplifyController.js';
 
 const router = express.Router();
 
 
-router.post('/generateAIResponse', generateAIResponseController);
+router.post('/generateAIResponse', generateAIResponse);
+router.post('/generateSimplifyResponse', generateSimplifyResponse);
+
 
 
 export default router;
