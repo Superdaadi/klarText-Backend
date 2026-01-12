@@ -29,6 +29,53 @@ export async function generateAIResponseService(prompt) {
 
 
 
+  export async function queryLocalAI(prompt) {
+    const response = await fetch("http://localhost:11434/api/generate", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        model: "llama3.2:1b",
+        prompt: prompt,
+        stream: false,
+        options: {
+          num_predict: 600,
+          temperature: 0.2
+        }
+      })
+    });
+
+    if (!response.ok) {
+      throw new Error("AI model request failed");
+    }
+
+    const reader = response.body.getReader();
+    const decoder = new TextDecoder("utf-8");
+
+    let fullText = "";
+
+    while (true) {
+      const { value, done } = await reader.read();
+      if (done) break;
+
+      const chunk = decoder.decode(value, { stream: true });
+      const lines = chunk.split("\n").filter(Boolean);
+
+      for (const line of lines) {
+        const json = JSON.parse(line);
+
+        if (json.response) {
+          process.stdout.write(json.response); // live
+          fullText += json.response;           // sammeln
+        }
+      }
+    }
+
+    return fullText; // ✅ DAS ist jetzt dein Ergebnis
+  }
+
+
+
+
 
 export const generateSimplifyResponseService = async ({
   text,
@@ -94,16 +141,25 @@ export const generateSimplifyResponseService = async ({
     """${text}"""
   `;
 
-  //const geminiResponse = await callGemini(prompt);
 
-  const geminiResponse = await generateAIResponseService(prompt);
+  console.log(prompt);
+
+
+  const llama3Response = await queryLocalAI(prompt);
+
+
+
+
+  //const geminiResponse = await generateAIResponseService(prompt);
 
   /**
    * Wichtig:
    * Gemini MUSS bereits reines JSON zurückgeben.
    * Kein Parsing erzwingen, einfach durchreichen.
    */
-  return geminiResponse;
+  console.log(llama3Response)
+
+  return llama3Response;
 };
 
 
