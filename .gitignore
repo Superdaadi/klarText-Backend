@@ -1,0 +1,9 @@
+node_modules
+.angular
+dist
+gitleaks.exe
+dev-cert.pem
+dev-key.pem
+.env
+.vscode
+.bat

@@ -1,20 +1,29 @@
 import express from "express";
-import { generateAIResponse } from "./aiService.js";
+import cors from 'cors';
+import fs from "fs";
+
+import { connectMongo } from "./middleware/db.js";
+
+import simplifyRouter from './routes/simplifyRoutes.js';
+
+
 
 const app = express();
+
+
+app.use(cors());
 app.use(express.json());
 
-app.post("/api/ai", async (req, res) => {
-  try {
-    const { prompt } = req.body;
-    const result = await generateAIResponse(prompt);
-    res.json({ result });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "AI request failed" });
-  }
-});
 
+app.use('/simplify', simplifyRouter);
+
+
+//connectMongo();
+
+
+// ------------------------------
+// Server starten
+// ------------------------------
 app.listen(3000, () => {
   console.log("Server running on http://localhost:3000");
 });
