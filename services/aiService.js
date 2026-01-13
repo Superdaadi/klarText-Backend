@@ -17,17 +17,165 @@ const genAI = new GoogleGenerativeAI(
 
 
 
-export async function generateAIResponseService(prompt) {
-  const response = await ai.models.generateContent({
-    model: "gemini-2.5-flash",
-    contents: prompt,
-  });
+  export async function generateAIResponseService(prompt) {
+    const response = await ai.models.generateContent({
+      model: "gemini-2.5-flash",
+      contents: prompt,
+    });
 
-  return response.text;
-}
+    return response.text;
+  }
 
 
 
+
+
+
+
+  export async function simplifyText(text) {
+    const sentences = splitIntoSentences(text);
+    const results = [];
+
+    for (const sentence of sentences) {
+      const prompt = buildPrompt(sentence);
+      const rawOutput = await queryLocalAI(prompt);
+
+      const parsed = parseJSONOutput(rawOutput);
+
+      // 🔹 Flach machen: parsed kann Array oder Objekt sein
+      if (Array.isArray(parsed)) {
+        parsed.forEach(item => {
+          if (Array.isArray(item)) {
+            results.push(...item); // verschachtelte Arrays auspacken
+          } else {
+            results.push(item);
+          }
+        });
+      } else {
+        results.push(parsed);
+      }
+
+      console.clear();
+      console.log(JSON.stringify(results, null, 2));
+
+      //console.log(results);
+    }
+
+
+
+    //const rawOutput = await queryLocalAI(prompt);
+
+    //console.log(results);
+
+    return results;
+  }
+
+
+
+
+  // 1: Sentence Splitter
+
+  export function splitIntoSentences(text) {
+    return text
+      .replace(/\n+/g, " ")             // Zeilenumbrüche durch Leerzeichen
+      .replace(/["'»«„“]/g, "")         // Anführungszeichen entfernen
+      .match(/(?:\d+\.)|\d+(?:,\d+)?|[^.!?]+[.!?]+/g) // Zahlen und Sätze
+      ?.map(s => s.trim()) || [];
+  }
+
+
+
+
+
+
+
+
+
+  export function parseJSONOutput(raw) {
+    if (typeof raw !== "string") return raw;
+
+    let clean = raw.trim()
+      .replace(/^```(\w*)\s*/, "") // ```json oder ``` am Anfang
+      .replace(/```$/, "")         // ``` am Ende
+      .trim();
+
+    // 1️⃣ Versuch direkt zu parsen
+    try {
+      return JSON.parse(clean);
+    } catch {
+      // 2️⃣ Falls nicht möglich, einzelne Objekte parsen
+      const objects = [];
+      const regex = /\{[\s\S]*?\}/g; // alle Objekte von { bis } inkl.
+      let match;
+      while ((match = regex.exec(clean)) !== null) {
+        try {
+          objects.push(JSON.parse(match[0]));
+        } catch (err) {
+          console.warn("Ein Objekt konnte nicht geparst werden:", err);
+        }
+      }
+
+      // 3️⃣ Rückgabe konsistent
+      if (objects.length === 1) return objects[0];
+      return objects; // mehrere → Array
+    }
+  }
+
+
+
+
+
+
+
+
+  export function buildPrompt(inputText) {
+    return `
+      Du bist ein Assistent für Sprachvereinfachung.
+
+      AUFGABE:
+        Verarbeite immer nur EINEN Satz auf einmal.
+
+        Identifiziere schwierige Wörter.
+
+        Schreibe den Satz in einfacher Sprache um.
+
+        Erkläre die schwierigen Wörter kurz und knapp.
+
+      AUSGABEFORMAT:
+
+       JSON SCHEMA:
+
+      [
+        {
+          "inputText": "Original sentence with **bold** difficult words",
+          "simplified": "Simplified version of the sentence",
+          "wordExpl": [
+            {
+              "word": "word",
+              "expl": "simple explanation"
+            },
+            {
+              "word": "word2",
+              "expl": "simple explanation2"
+            }
+          ]
+        }
+      ]
+
+      REGELN:
+        Gib UNBEDINGT JSON aus.
+
+        Füge KEINEN zusätzlichen Text oder Smalltalk hinzu.
+
+        Nutze für die gesamte Ausgabe deutsch!
+
+      TEXT: """${inputText}"""
+    `;
+  }
+
+
+
+  // 2: AI-Service
 
   export async function queryLocalAI(prompt) {
     const response = await fetch("http://localhost:11434/api/generate", {
@@ -35,49 +183,125 @@ export async function generateAIResponseService(prompt) {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         model: "llama3.2:1b",
-        prompt: prompt,
+        prompt,
         stream: false,
         options: {
-          num_predict: 600,
-          temperature: 0.2
+          temperature: 0.2,
+          num_predict: 300
         }
       })
     });
 
     if (!response.ok) {
-      throw new Error("AI model request failed");
+      throw new Error("AI request failed");
     }
 
-    const reader = response.body.getReader();
-    const decoder = new TextDecoder("utf-8");
+    const data = await response.json();
+    return data.response;
+  }
 
-    let fullText = "";
 
-    while (true) {
-      const { value, done } = await reader.read();
-      if (done) break;
 
-      const chunk = decoder.decode(value, { stream: true });
-      const lines = chunk.split("\n").filter(Boolean);
 
-      for (const line of lines) {
-        const json = JSON.parse(line);
+  
 
-        if (json.response) {
-          process.stdout.write(json.response); // live
-          fullText += json.response;           // sammeln
-        }
+
+
+  // 4: Parse LLM Output
+
+  export function parseLLMOutput(raw) {
+    console.log(raw);
+
+    // Use optional chaining (?.[1]) and default to empty strings ("")
+    const sentence = raw.match(/SENTENCE:\s*([\s\S]*?)\n\n/i)?.[1]?.trim() || "";
+    const hardWordsLine = raw.match(/HARD WORDS:\s*(.*)/i)?.[1]?.trim() || "";
+    const simplified = raw.match(/SIMPLIFIED:\s*([\s\S]*?)\n\n/i)?.[1]?.trim() || "";
+    const explBlock = raw.match(/EXPLANATIONS:\s*([\s\S]*)/i)?.[1] || "";
+
+    const hardWords = hardWordsLine
+      ? hardWordsLine.split("|")
+          .map(w => w.trim())
+          .filter(w => w.length > 0 && !w.includes('*')) // Filter out empty strings and accidental markdown
+      : [];
+
+    let highlightedSentence = sentence || "";
+
+    hardWords.forEach(word => {
+      if (word && highlightedSentence) {
+        // Escape special regex characters in the word to prevent crashes
+        const escapedWord = word.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+        
+        // Use the escaped word in the Regex
+        const regex = new RegExp(`\\b${escapedWord}\\b`, "gi");
+        highlightedSentence = highlightedSentence.replace(regex, `**${word}**`);
       }
+    });
+
+    const wordExpl = [];
+    if (explBlock) {
+      explBlock.split("\n").forEach(line => {
+        const parts = line.split("=");
+        if (parts.length >= 2) {
+          wordExpl.push({
+            word: parts[0].trim(),
+            expl: parts[1].trim()
+          });
+        }
+      });
     }
 
-    return fullText; // ✅ DAS ist jetzt dein Ergebnis
+    return {
+      splittedSentence: highlightedSentence,
+      simplified,
+      wordExpl
+    };
   }
 
 
 
 
 
-export const generateSimplifyResponseService = async ({
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*export const generateSimplifyResponseService = async ({
   text,
   simplified = "leicht",
   keypoints = "true",
@@ -152,11 +376,6 @@ export const generateSimplifyResponseService = async ({
 
   //const geminiResponse = await generateAIResponseService(prompt);
 
-  /**
-   * Wichtig:
-   * Gemini MUSS bereits reines JSON zurückgeben.
-   * Kein Parsing erzwingen, einfach durchreichen.
-   */
   console.log(llama3Response)
 
   return llama3Response;
@@ -174,7 +393,7 @@ export const callGemini = async (prompt) => {
 
   // Erwartet wird bereits pures JSON
   return JSON.parse(response);
-};
+};*/
 
 
 

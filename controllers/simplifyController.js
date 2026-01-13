@@ -1,6 +1,6 @@
 
 
-import { generateAIResponseService, generateSimplifyResponseService } from '../services/aiService.js';
+import { generateAIResponseService, simplifyText } from '../services/aiService.js';
 
 
 export const generateAIResponse = async (req, res) => {
@@ -24,7 +24,7 @@ export const generateAIResponse = async (req, res) => {
 
 
 
-
+/*
 export const generateSimplifyResponse = async (req, res) => {
   try {
     const { text, simplified, keypoints, language } = req.body;
@@ -46,7 +46,20 @@ export const generateSimplifyResponse = async (req, res) => {
     console.error(err);
     res.status(500).json({ error: "AI generation failed" });
   }
-};
+};*/
+
+
+
+export async function generateSimplifyResponse(req, res) {
+  try {
+    const { text } = req.body;
+    const result = await simplifyText(text);
+    res.json(result);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ error: "Simplification failed" });
+  }
+}
 
 
 
