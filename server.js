@@ -11,7 +11,11 @@ import simplifyRouter from './routes/simplifyRoutes.js';
 const app = express();
 
 
-app.use(cors());
+app.use(cors({
+  origin: 'http://localhost:4200', // Allow only your frontend
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
 app.use(express.json());
 
 

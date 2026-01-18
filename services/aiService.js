@@ -33,7 +33,12 @@ const genAI = new GoogleGenerativeAI(
 
 
   export async function simplifyText(text) {
-    const sentences = splitIntoSentences(text);
+
+    const results = await generateSimplifyResponseServiceFULL();
+
+
+
+    /*const sentences = splitIntoSentences(text);
     const results = [];
 
     for (const sentence of sentences) {
@@ -65,7 +70,7 @@ const genAI = new GoogleGenerativeAI(
 
     //const rawOutput = await queryLocalAI(prompt);
 
-    //console.log(results);
+    //console.log(results);*/
 
     return results;
   }
@@ -182,7 +187,7 @@ const genAI = new GoogleGenerativeAI(
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        model: "llama3.2:1b",
+        model: "deepseek-r1:7b",
         prompt,
         stream: false,
         options: {
@@ -201,9 +206,30 @@ const genAI = new GoogleGenerativeAI(
   }
 
 
+  export async function queryLocalAI2(prompt) {
+    const response = await fetch("http://localhost:11434/api/generate", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        model: "deepseek-r1:7b",
+        prompt: prompt,
+        stream: true, // Streaming aktivieren!
+      })
+    });
 
+    const reader = response.body.getReader();
+    const decoder = new TextDecoder();
 
-  
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      
+      const chunk = decoder.decode(value, { stream: true });
+      const json = JSON.parse(chunk);
+      process.stdout.write(json.response); // Schreibt Stück für Stück in die Konsole
+    }
+  }
+
 
 
 
@@ -301,7 +327,7 @@ const genAI = new GoogleGenerativeAI(
 
 
 
-/*export const generateSimplifyResponseService = async ({
+export const generateSimplifyResponseServiceFULL = async ({
   text,
   simplified = "leicht",
   keypoints = "true",
@@ -329,13 +355,13 @@ const genAI = new GoogleGenerativeAI(
     - Explain the highlighted words in simple terms.
 
     SIMPLIFICATION LEVEL:
-    ${simplifyLevelMap[simplified]}
+    MIDDLE
 
     WORD EXPLANATIONS:
-    ${keypoints ? "Provide word explanations." : "Do NOT provide word explanations. Use empty arrays."}
+    YES
 
     LANGUAGE:
-    ${languageInstruction}
+    DEUTSCH/GERMAN
 
     OUTPUT FORMAT (JSON ONLY):
     Return ONLY valid JSON.
@@ -350,7 +376,7 @@ const genAI = new GoogleGenerativeAI(
     JSON SCHEMA:
     [
       {
-        "splittedSentence": "Original sentence with **bold** difficult words",
+        "inputText": "Original sentence with **bold** difficult words",
         "simplified": "Simplified version of the sentence",
         "wordExpl": [
           {
@@ -371,7 +397,7 @@ const genAI = new GoogleGenerativeAI(
 
   const llama3Response = await queryLocalAI(prompt);
 
-
+  const response = await queryLocalAI(prompt);
 
 
   //const geminiResponse = await generateAIResponseService(prompt);
@@ -393,7 +419,7 @@ export const callGemini = async (prompt) => {
 
   // Erwartet wird bereits pures JSON
   return JSON.parse(response);
-};*/
+};
 
 
 
