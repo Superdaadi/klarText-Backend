@@ -7,3 +7,10 @@ dev-key.pem
 .env
 .vscode
 .bat
+
+*.sh
+*.mp3
+*.wav
+__pycache__
+*.pyc
+*.lab
