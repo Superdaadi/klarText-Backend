@@ -1,0 +1,12 @@
+ctc_segmentation==1.7.4
+epitran==1.34.0
+fastapi==0.128.0
+librosa==0.11.0
+montreal_forced_aligner==3.3.8
+noisereduce==3.0.3
+numpy==2.4.1
+parselmouth==1.1.1
+soundfile==0.13.1
+torch==2.9.1
+torchaudio==2.9.1
+transformers==4.57.6
