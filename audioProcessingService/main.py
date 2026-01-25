@@ -6,7 +6,7 @@ import uuid
 import logging
 
 from audio_processor import process_audio
-from phoeme_extraction import extract_phonemes
+from OLD.phoeme_extraction import extract_phonemes
 
 # --- Logging konfigurieren ---
 logger = logging.getLogger("uvicorn.error")
