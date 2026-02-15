@@ -47,7 +47,6 @@ msgpack==1.1.2
 munkres==1.1.4
 networkx==3.6.1
 noisereduce==3.0.3
-num2words==0.5.14
 numba==0.63.1
 numpy==2.3.5
 nvidia-cublas-cu12==12.8.4.1

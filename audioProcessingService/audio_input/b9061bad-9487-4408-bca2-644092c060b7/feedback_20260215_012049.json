@@ -1,0 +1,54 @@
+{
+  "headline": "💪 Sehr gut! (Note: B)",
+  "summary": "Deine Aussprache ist schon sehr gut! Von 4 analysierten Lauten hast du 4 bereits sehr gut gemeistert.",
+  "overall_score": 73.5,
+  "grade": "B",
+  "encouragement": "Super Fortschritt! Mit gezieltem Üben wirst du schnell besser.",
+  "strengths": [
+    {
+      "phoneme": "s",
+      "score": 78.6,
+      "count": 3,
+      "label": "Gut",
+      "consistency": "Sehr konsistent"
+    },
+    {
+      "phoneme": "t",
+      "score": 94.2,
+      "count": 3,
+      "label": "Sehr gut",
+      "consistency": "Sehr konsistent"
+    }
+  ],
+  "weaknesses": [
+    {
+      "phoneme": "tʰ",
+      "score": 59.4,
+      "count": 3,
+      "difficulty": "medium",
+      "consistency": 78.2,
+      "tip": "Klarer, kurzer Hauch – nicht überaspirieren.",
+      "note": "📚 Mit gezielter Übung schnell verbesserbar."
+    }
+  ],
+  "exercises": [
+    {
+      "phoneme": "tʰ",
+      "exercise": "Tisch – Tat – Tier | Leichter Luftstoß, nicht übertreiben",
+      "priority": "mittel"
+    }
+  ],
+  "insights": [
+    "🔗 Einige Lautkombinationen sind besonders anspruchsvoll – übe diese Übergänge gezielt."
+  ],
+  "metadata": {
+    "total_phonemes": 4,
+    "avg_gop": -26.43,
+    "distribution": {
+      "excellent": 4,
+      "good": 0,
+      "ok": 0,
+      "needs_work": 0
+    }
+  }
+}
