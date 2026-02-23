@@ -1,0 +1,271 @@
+{
+  "overall": {
+    "weighted_score": 77.8,
+    "avg_gop": -27.36,
+    "total_phonemes": 10,
+    "excellent_count": 10,
+    "good_count": 0,
+    "ok_count": 0,
+    "needs_work_count": 0,
+    "grade": "A"
+  },
+  "phonemes": [
+    {
+      "phoneme": "b",
+      "count": 1,
+      "avg_gop": -28.34,
+      "adjusted_gop": -28.34,
+      "std_gop": 0,
+      "absolute_rating": "excellent",
+      "relative_score": 0,
+      "consistency_score": 100.0,
+      "final_score": 63.0,
+      "difficulty": "medium",
+      "needs_practice": false
+    },
+    {
+      "phoneme": "d",
+      "count": 1,
+      "avg_gop": -28.05,
+      "adjusted_gop": -28.05,
+      "std_gop": 0,
+      "absolute_rating": "excellent",
+      "relative_score": 13.8,
+      "consistency_score": 100.0,
+      "final_score": 67.8,
+      "difficulty": "medium",
+      "needs_practice": false
+    },
+    {
+      "phoneme": "aː",
+      "count": 1,
+      "avg_gop": -27.71,
+      "adjusted_gop": -24.94,
+      "std_gop": 0,
+      "absolute_rating": "excellent",
+      "relative_score": 29.6,
+      "consistency_score": 100.0,
+      "final_score": 73.4,
+      "difficulty": "medium",
+      "needs_practice": false
+    },
+    {
+      "phoneme": "t",
+      "count": 3,
+      "avg_gop": -27.56,
+      "adjusted_gop": -27.56,
+      "std_gop": 0.25,
+      "absolute_rating": "excellent",
+      "relative_score": 36.6,
+      "consistency_score": 95.0,
+      "final_score": 74.6,
+      "difficulty": "medium",
+      "needs_practice": false
+    },
+    {
+      "phoneme": "ɪ",
+      "count": 3,
+      "avg_gop": -27.43,
+      "adjusted_gop": -27.43,
+      "std_gop": 0.53,
+      "absolute_rating": "excellent",
+      "relative_score": 42.6,
+      "consistency_score": 89.5,
+      "final_score": 75.3,
+      "difficulty": "medium",
+      "needs_practice": false
+    },
+    {
+      "phoneme": "ç",
+      "count": 1,
+      "avg_gop": -27.54,
+      "adjusted_gop": -33.05,
+      "std_gop": 0,
+      "absolute_rating": "excellent",
+      "relative_score": 37.3,
+      "consistency_score": 100.0,
+      "final_score": 78.0,
+      "difficulty": "hard",
+      "needs_practice": false
+    },
+    {
+      "phoneme": "n",
+      "count": 1,
+      "avg_gop": -27.42,
+      "adjusted_gop": -24.68,
+      "std_gop": 0,
+      "absolute_rating": "excellent",
+      "relative_score": 43.0,
+      "consistency_score": 100.0,
+      "final_score": 78.0,
+      "difficulty": "easy",
+      "needs_practice": false
+    },
+    {
+      "phoneme": "ɛ",
+      "count": 2,
+      "avg_gop": -27.21,
+      "adjusted_gop": -27.21,
+      "std_gop": 0.58,
+      "absolute_rating": "excellent",
+      "relative_score": 52.8,
+      "consistency_score": 88.5,
+      "final_score": 78.6,
+      "difficulty": "medium",
+      "needs_practice": false
+    },
+    {
+      "phoneme": "s",
+      "count": 2,
+      "avg_gop": -27.16,
+      "adjusted_gop": -27.16,
+      "std_gop": 0.02,
+      "absolute_rating": "excellent",
+      "relative_score": 55.4,
+      "consistency_score": 99.6,
+      "final_score": 82.3,
+      "difficulty": "medium",
+      "needs_practice": false
+    },
+    {
+      "phoneme": "tʰ",
+      "count": 2,
+      "avg_gop": -26.2,
+      "adjusted_gop": -23.58,
+      "std_gop": 0.44,
+      "absolute_rating": "excellent",
+      "relative_score": 100,
+      "consistency_score": 91.2,
+      "final_score": 95.8,
+      "difficulty": "medium",
+      "needs_practice": false
+    }
+  ],
+  "global_stats": {
+    "global_mean": -27.46262,
+    "global_median": -27.48728333333333,
+    "global_std": 0.5723513796956439,
+    "best_phoneme_score": -26.2001,
+    "worst_phoneme_score": -28.3438
+  },
+  "context_insights": {
+    "word_position_analysis": {},
+    "coarticulation_effects": [
+      {
+        "phoneme": "s",
+        "context": "ɛ-s-t",
+        "note": "s vor t ist artikulatorisch anspruchsvoll"
+      },
+      {
+        "phoneme": "s",
+        "context": "ɛ-s-t",
+        "note": "s vor t ist artikulatorisch anspruchsvoll"
+      }
+    ],
+    "duration_outliers": []
+  },
+  "raw_data": [
+    {
+      "phoneme": "tʰ",
+      "start": 0.0,
+      "end": 0.11,
+      "gop_score": -25.8904
+    },
+    {
+      "phoneme": "ɛ",
+      "start": 0.11,
+      "end": 0.24,
+      "gop_score": -26.8047
+    },
+    {
+      "phoneme": "s",
+      "start": 0.24,
+      "end": 0.36,
+      "gop_score": -27.1697
+    },
+    {
+      "phoneme": "t",
+      "start": 0.36,
+      "end": 0.51,
+      "gop_score": -27.3942
+    },
+    {
+      "phoneme": "tʰ",
+      "start": 1.03,
+      "end": 1.09,
+      "gop_score": -26.5098
+    },
+    {
+      "phoneme": "ɛ",
+      "start": 1.09,
+      "end": 1.3,
+      "gop_score": -27.6212
+    },
+    {
+      "phoneme": "s",
+      "start": 1.3,
+      "end": 1.45,
+      "gop_score": -27.1444
+    },
+    {
+      "phoneme": "t",
+      "start": 1.45,
+      "end": 1.61,
+      "gop_score": -27.4348
+    },
+    {
+      "phoneme": "ɪ",
+      "start": 2.84,
+      "end": 2.98,
+      "gop_score": -27.9854
+    },
+    {
+      "phoneme": "ç",
+      "start": 2.98,
+      "end": 3.14,
+      "gop_score": -27.5449
+    },
+    {
+      "phoneme": "b",
+      "start": 3.14,
+      "end": 3.19,
+      "gop_score": -28.3438
+    },
+    {
+      "phoneme": "ɪ",
+      "start": 3.19,
+      "end": 3.26,
+      "gop_score": -27.3618
+    },
+    {
+      "phoneme": "n",
+      "start": 3.26,
+      "end": 3.43,
+      "gop_score": -27.4225
+    },
+    {
+      "phoneme": "d",
+      "start": 3.43,
+      "end": 3.49,
+      "gop_score": -28.0484
+    },
+    {
+      "phoneme": "aː",
+      "start": 3.49,
+      "end": 3.64,
+      "gop_score": -27.7082
+    },
+    {
+      "phoneme": "ɪ",
+      "start": 3.65,
+      "end": 3.76,
+      "gop_score": -26.9418
+    },
+    {
+      "phoneme": "t",
+      "start": 3.76,
+      "end": 3.84,
+      "gop_score": -27.8469
+    }
+  ]
+}

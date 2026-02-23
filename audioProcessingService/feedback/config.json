@@ -8,7 +8,7 @@
       "excellent": -80.0,
       "good": -85.0,
       "ok": -90.0,
-      "needs_work": -91.15
+      "needs_work": -94.65
     },
     "min_bounds": {
       "excellent": -24.0,
@@ -80,9 +80,9 @@
     }
   },
   "user_preferences": {
-    "feedback_too_strict_count": 0,
+    "feedback_too_strict_count": 4,
     "feedback_too_loose_count": 0,
     "feedback_just_right_count": 0,
-    "last_adjustment": "2026-02-15T01:20:49.456205"
+    "last_adjustment": "2026-02-16T12:21:38.587976"
   }
 }

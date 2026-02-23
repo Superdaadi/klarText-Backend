@@ -4,6 +4,7 @@ Erzeugt motivierendes, nutzerfreundliches Feedback
 """
 
 import json
+import datetime
 from typing import Dict, List
 
 # Erweiterte Artikulationstipps
@@ -108,7 +109,7 @@ class FeedbackGenerator:
             "developing": 55
         })
     
-    def generate_feedback(self, analysis: Dict) -> Dict:
+    def generate_feedback(self, analysis: Dict, text: str) -> Dict:
         """
         Generiert umfassendes Feedback aus der Analyse
         
@@ -125,6 +126,8 @@ class FeedbackGenerator:
         weaknesses = [p for p in phonemes if p["needs_practice"]][:5]  # Worst 5
         
         # Generiere Texte
+        genText = text
+        date = datetime.datetime.now().isoformat()
         headline = self._generate_headline(overall)
         summary = self._generate_summary(overall, len(strengths), len(weaknesses))
         encouragement = self._generate_encouragement(overall)
@@ -139,6 +142,8 @@ class FeedbackGenerator:
         insights = self._generate_insights(analysis)
         
         return {
+            "text": genText,
+            "date": date,
             "headline": headline,
             "summary": summary,
             "overall_score": overall["weighted_score"],

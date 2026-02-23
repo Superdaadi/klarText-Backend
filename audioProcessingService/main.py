@@ -16,6 +16,7 @@ logger = logging.getLogger("uvicorn.error")
 logger.setLevel(logging.INFO)
 
 
+# --- Directories ---
 UPLOAD_DIR = "uploads"
 os.makedirs(UPLOAD_DIR, exist_ok=True)
 
@@ -23,6 +24,7 @@ AUDIO_INPUT_BASE = os.path.join(os.getcwd(), "audio_input")
 os.makedirs(AUDIO_INPUT_BASE, exist_ok=True)
 
 
+# --- FastAPI App ---
 app = FastAPI(
     title="Audio Processing Service",
     description="Normalize & clean audio files",
@@ -39,6 +41,9 @@ app.add_middleware(
 )
 
 
+# -----------------------------
+# Upload Endpoint
+# -----------------------------
 @app.post("/process-audio")
 async def process_audio_endpoint(file: UploadFile = File(...)):
     if not file.filename.lower().endswith((".wav", ".mp3", ".webm")):
@@ -81,7 +86,7 @@ async def process_audio_endpoint(file: UploadFile = File(...)):
 
         # --- Modul 4: Feedback ---
         # Hier musst du ggf. die Pfade an runFeedback übergeben
-        runFeedback(alignment_out) 
+        runFeedback(alignment_out, erkannter_text) 
 
     except Exception as e:
         print(f"❌ Fehler im Ablauf: {e}")
@@ -93,6 +98,9 @@ async def process_audio_endpoint(file: UploadFile = File(...)):
 
 
 
+# -----------------------------
+# Fallback Endpoint
+# -----------------------------
 @app.get("/get-audio-results/{request_id}")
 async def get_audio_results(request_id: str):
     

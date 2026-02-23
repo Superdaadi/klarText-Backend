@@ -130,6 +130,8 @@ def print_summary(feedback: dict):
     print("\n" + "="*70)
     print(f"  {feedback['headline']}")
     print("="*70)
+    print(f"\nDatum: {feedback['date']}")
+    print(f"\nErkannter Text: {feedback['text']}")
     print(f"\n📊 Gesamtscore: {feedback['overall_score']}/100 (Note: {feedback['grade']})")
     print(f"\n{feedback['summary']}")
     print(f"\n💬 {feedback['encouragement']}")
@@ -153,7 +155,7 @@ def print_summary(feedback: dict):
 
 
 
-def main(input_path: str, output_path: str, config: str, userFeedback: str = "", quiet: bool = False):
+def main(input_path: str, output_path: str, config: str, text: str, userFeedback: str = "", quiet: bool = False):
     # Interne Hilfsfunktion für sauberes Logging
     def log(msg):
         if not quiet: print(msg)
@@ -178,7 +180,7 @@ def main(input_path: str, output_path: str, config: str, userFeedback: str = "",
         gop_data = load_gop_data(input_path)
         analysis = IntelligentAnalyzer(config).analyze(gop_data)
         # log(analysis)
-        feedback = FeedbackGenerator(config).generate_feedback(analysis)
+        feedback = FeedbackGenerator(config).generate_feedback(analysis, text)
         
         # 4. Speichern und Abschluss
         saved_paths = save_results(output_path, analysis, feedback)
@@ -206,8 +208,8 @@ OUTPUT_DIR = "./feedback_output"
 CONFIG_FILE = "./feedback/config.json"
 
 
-def runFeedback(dir: str):
-    main(f"{dir}/gop_results.json", dir, CONFIG_FILE, "too_strict", False)
+def runFeedback(dir: str, text: str):
+    main(f"{dir}/gop_results.json", dir, CONFIG_FILE, text, "too_strict", False)
 
 
 if __name__ == "__main__":
