@@ -4,7 +4,8 @@ import re
 
 # Modell einmalig laden
 print("Lade Whisper Modell...")
-whisper_model = whisper.load_model("base")
+# whisper_model = whisper.load_model("base")
+whisper_model = whisper.load_model("medium")
 
 def digits_to_words(text: str) -> str:
     digit_map = {

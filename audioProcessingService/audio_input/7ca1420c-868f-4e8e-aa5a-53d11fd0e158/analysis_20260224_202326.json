@@ -1,0 +1,212 @@
+{
+  "overall": {
+    "weighted_score": 81.7,
+    "avg_gop": -27.93,
+    "total_phonemes": 6,
+    "excellent_count": 6,
+    "good_count": 0,
+    "ok_count": 0,
+    "needs_work_count": 0,
+    "grade": "A"
+  },
+  "phonemes": [
+    {
+      "phoneme": "n",
+      "count": 1,
+      "avg_gop": -29.08,
+      "adjusted_gop": -26.18,
+      "std_gop": 0,
+      "absolute_rating": "excellent",
+      "relative_score": 0,
+      "consistency_score": 100.0,
+      "final_score": 63.0,
+      "difficulty": "easy",
+      "needs_practice": false
+    },
+    {
+      "phoneme": "ɛ",
+      "count": 3,
+      "avg_gop": -28.54,
+      "adjusted_gop": -28.54,
+      "std_gop": 0.31,
+      "absolute_rating": "excellent",
+      "relative_score": 29.2,
+      "consistency_score": 93.9,
+      "final_score": 71.7,
+      "difficulty": "medium",
+      "needs_practice": false
+    },
+    {
+      "phoneme": "tʰ",
+      "count": 3,
+      "avg_gop": -27.79,
+      "adjusted_gop": -25.01,
+      "std_gop": 1.26,
+      "absolute_rating": "excellent",
+      "relative_score": 68.6,
+      "consistency_score": 74.8,
+      "final_score": 80.7,
+      "difficulty": "medium",
+      "needs_practice": false
+    },
+    {
+      "phoneme": "ʊ",
+      "count": 1,
+      "avg_gop": -28.06,
+      "adjusted_gop": -28.06,
+      "std_gop": 0,
+      "absolute_rating": "excellent",
+      "relative_score": 54.3,
+      "consistency_score": 100.0,
+      "final_score": 82.0,
+      "difficulty": "medium",
+      "needs_practice": false
+    },
+    {
+      "phoneme": "t",
+      "count": 4,
+      "avg_gop": -27.8,
+      "adjusted_gop": -27.8,
+      "std_gop": 0.48,
+      "absolute_rating": "excellent",
+      "relative_score": 68.4,
+      "consistency_score": 90.4,
+      "final_score": 84.6,
+      "difficulty": "medium",
+      "needs_practice": false
+    },
+    {
+      "phoneme": "s",
+      "count": 3,
+      "avg_gop": -27.2,
+      "adjusted_gop": -27.2,
+      "std_gop": 0.61,
+      "absolute_rating": "excellent",
+      "relative_score": 100,
+      "consistency_score": 87.8,
+      "final_score": 94.9,
+      "difficulty": "medium",
+      "needs_practice": false
+    }
+  ],
+  "global_stats": {
+    "global_mean": -28.078311111111113,
+    "global_median": -27.92825,
+    "global_std": 0.6564525920655884,
+    "best_phoneme_score": -27.2007,
+    "worst_phoneme_score": -29.0849
+  },
+  "context_insights": {
+    "word_position_analysis": {},
+    "coarticulation_effects": [
+      {
+        "phoneme": "s",
+        "context": "ɛ-s-t",
+        "note": "s vor t ist artikulatorisch anspruchsvoll"
+      },
+      {
+        "phoneme": "s",
+        "context": "ɛ-s-t",
+        "note": "s vor t ist artikulatorisch anspruchsvoll"
+      },
+      {
+        "phoneme": "s",
+        "context": "ɛ-s-t",
+        "note": "s vor t ist artikulatorisch anspruchsvoll"
+      }
+    ],
+    "duration_outliers": []
+  },
+  "raw_data": [
+    {
+      "phoneme": "tʰ",
+      "start": 0.0,
+      "end": 0.09,
+      "gop_score": -26.3386
+    },
+    {
+      "phoneme": "ɛ",
+      "start": 0.09,
+      "end": 0.24,
+      "gop_score": -28.297
+    },
+    {
+      "phoneme": "s",
+      "start": 0.24,
+      "end": 0.41,
+      "gop_score": -27.7905
+    },
+    {
+      "phoneme": "t",
+      "start": 0.41,
+      "end": 0.55,
+      "gop_score": -28.288
+    },
+    {
+      "phoneme": "tʰ",
+      "start": 0.66,
+      "end": 0.76,
+      "gop_score": -28.4874
+    },
+    {
+      "phoneme": "ɛ",
+      "start": 0.76,
+      "end": 0.9,
+      "gop_score": -28.8822
+    },
+    {
+      "phoneme": "s",
+      "start": 0.9,
+      "end": 1.06,
+      "gop_score": -27.2436
+    },
+    {
+      "phoneme": "t",
+      "start": 1.06,
+      "end": 1.18,
+      "gop_score": -28.102
+    },
+    {
+      "phoneme": "tʰ",
+      "start": 1.32,
+      "end": 1.43,
+      "gop_score": -28.5507
+    },
+    {
+      "phoneme": "ɛ",
+      "start": 1.43,
+      "end": 1.57,
+      "gop_score": -28.4274
+    },
+    {
+      "phoneme": "s",
+      "start": 1.57,
+      "end": 1.72,
+      "gop_score": -26.568
+    },
+    {
+      "phoneme": "t",
+      "start": 1.72,
+      "end": 1.81,
+      "gop_score": -27.266
+    },
+    {
+      "phoneme": "ʊ",
+      "start": 1.97,
+      "end": 2.06,
+      "gop_score": -28.0611
+    },
+    {
+      "phoneme": "n",
+      "start": 2.06,
+      "end": 2.13,
+      "gop_score": -29.0849
+    },
+    {
+      "phoneme": "t",
+      "start": 2.13,
+      "end": 2.16,
+      "gop_score": -27.5256
+    }
+  ]
+}

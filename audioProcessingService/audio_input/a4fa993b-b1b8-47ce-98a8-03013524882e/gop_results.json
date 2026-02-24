@@ -1,0 +1,134 @@
+[
+    {
+        "phoneme": "tʰ",
+        "start": 0.0,
+        "end": 0.1,
+        "gop_score": -26.4522
+    },
+    {
+        "phoneme": "ɛ",
+        "start": 0.1,
+        "end": 0.21,
+        "gop_score": -27.4575
+    },
+    {
+        "phoneme": "s",
+        "start": 0.21,
+        "end": 0.34,
+        "gop_score": -27.5561
+    },
+    {
+        "phoneme": "t",
+        "start": 0.34,
+        "end": 0.38,
+        "gop_score": -27.2725
+    },
+    {
+        "phoneme": "tʰ",
+        "start": 0.6,
+        "end": 0.7,
+        "gop_score": -28.3725
+    },
+    {
+        "phoneme": "ɛ",
+        "start": 0.7,
+        "end": 0.82,
+        "gop_score": -27.9706
+    },
+    {
+        "phoneme": "s",
+        "start": 0.82,
+        "end": 0.93,
+        "gop_score": -26.4881
+    },
+    {
+        "phoneme": "t",
+        "start": 0.93,
+        "end": 0.99,
+        "gop_score": -26.812
+    },
+    {
+        "phoneme": "tʰ",
+        "start": 1.72,
+        "end": 1.82,
+        "gop_score": -27.3874
+    },
+    {
+        "phoneme": "ɛ",
+        "start": 1.82,
+        "end": 1.94,
+        "gop_score": -27.3899
+    },
+    {
+        "phoneme": "s",
+        "start": 1.94,
+        "end": 2.11,
+        "gop_score": -25.4264
+    },
+    {
+        "phoneme": "t",
+        "start": 2.11,
+        "end": 2.21,
+        "gop_score": -27.5015
+    },
+    {
+        "phoneme": "ɪ",
+        "start": 2.33,
+        "end": 2.45,
+        "gop_score": -29.4998
+    },
+    {
+        "phoneme": "ç",
+        "start": 2.45,
+        "end": 2.49,
+        "gop_score": -31.9923
+    },
+    {
+        "phoneme": "b",
+        "start": 2.49,
+        "end": 2.62,
+        "gop_score": -28.3219
+    },
+    {
+        "phoneme": "ɪ",
+        "start": 2.62,
+        "end": 2.66,
+        "gop_score": -25.8684
+    },
+    {
+        "phoneme": "n",
+        "start": 2.66,
+        "end": 2.77,
+        "gop_score": -27.5412
+    },
+    {
+        "phoneme": "d",
+        "start": 2.77,
+        "end": 2.82,
+        "gop_score": -28.4546
+    },
+    {
+        "phoneme": "uː",
+        "start": 2.82,
+        "end": 2.99,
+        "gop_score": -27.5482
+    },
+    {
+        "phoneme": "b",
+        "start": 2.99,
+        "end": 3.02,
+        "gop_score": -27.4525
+    },
+    {
+        "phoneme": "ə",
+        "start": 3.02,
+        "end": 3.06,
+        "gop_score": -27.0501
+    },
+    {
+        "phoneme": "l",
+        "start": 3.06,
+        "end": 3.11,
+        "gop_score": -26.1567
+    }
+]

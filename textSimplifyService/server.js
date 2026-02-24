@@ -16,7 +16,7 @@ const options = {
 };
 
 app.use(cors({
-  origin: 'https://192.168.2.84:4200',
+  origin: '*',
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));

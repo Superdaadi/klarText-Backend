@@ -1,0 +1,122 @@
+[
+  {
+    "phoneme": "tʰ",
+    "start": 0.0,
+    "end": 0.09,
+    "gop_score": -26.34,
+    "score_0_100": 93.3,
+    "color": "green"
+  },
+  {
+    "phoneme": "ɛ",
+    "start": 0.09,
+    "end": 0.24,
+    "gop_score": -28.3,
+    "score_0_100": 83.5,
+    "color": "green"
+  },
+  {
+    "phoneme": "s",
+    "start": 0.24,
+    "end": 0.41,
+    "gop_score": -27.79,
+    "score_0_100": 86.0,
+    "color": "green"
+  },
+  {
+    "phoneme": "t",
+    "start": 0.41,
+    "end": 0.55,
+    "gop_score": -28.29,
+    "score_0_100": 83.6,
+    "color": "green"
+  },
+  {
+    "phoneme": "tʰ",
+    "start": 0.66,
+    "end": 0.76,
+    "gop_score": -28.49,
+    "score_0_100": 82.6,
+    "color": "green"
+  },
+  {
+    "phoneme": "ɛ",
+    "start": 0.76,
+    "end": 0.9,
+    "gop_score": -28.88,
+    "score_0_100": 80.6,
+    "color": "green"
+  },
+  {
+    "phoneme": "s",
+    "start": 0.9,
+    "end": 1.06,
+    "gop_score": -27.24,
+    "score_0_100": 88.8,
+    "color": "green"
+  },
+  {
+    "phoneme": "t",
+    "start": 1.06,
+    "end": 1.18,
+    "gop_score": -28.1,
+    "score_0_100": 84.5,
+    "color": "green"
+  },
+  {
+    "phoneme": "tʰ",
+    "start": 1.32,
+    "end": 1.43,
+    "gop_score": -28.55,
+    "score_0_100": 82.2,
+    "color": "green"
+  },
+  {
+    "phoneme": "ɛ",
+    "start": 1.43,
+    "end": 1.57,
+    "gop_score": -28.43,
+    "score_0_100": 82.9,
+    "color": "green"
+  },
+  {
+    "phoneme": "s",
+    "start": 1.57,
+    "end": 1.72,
+    "gop_score": -26.57,
+    "score_0_100": 92.2,
+    "color": "green"
+  },
+  {
+    "phoneme": "t",
+    "start": 1.72,
+    "end": 1.81,
+    "gop_score": -27.27,
+    "score_0_100": 88.7,
+    "color": "green"
+  },
+  {
+    "phoneme": "ʊ",
+    "start": 1.97,
+    "end": 2.06,
+    "gop_score": -28.06,
+    "score_0_100": 84.7,
+    "color": "green"
+  },
+  {
+    "phoneme": "n",
+    "start": 2.06,
+    "end": 2.13,
+    "gop_score": -29.08,
+    "score_0_100": 79.6,
+    "color": "green"
+  },
+  {
+    "phoneme": "t",
+    "start": 2.13,
+    "end": 2.16,
+    "gop_score": -27.53,
+    "score_0_100": 87.4,
+    "color": "green"
+  }
+]

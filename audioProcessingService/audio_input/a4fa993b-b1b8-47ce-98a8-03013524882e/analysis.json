@@ -1,0 +1,332 @@
+{
+  "overall": {
+    "weighted_score": 86.5,
+    "avg_gop": -27.54,
+    "total_phonemes": 12,
+    "excellent_count": 12,
+    "good_count": 0,
+    "ok_count": 0,
+    "needs_work_count": 0,
+    "grade": "A"
+  },
+  "phonemes": [
+    {
+      "phoneme": "ç",
+      "count": 1,
+      "avg_gop": -31.99,
+      "adjusted_gop": -38.39,
+      "std_gop": 0,
+      "absolute_rating": "excellent",
+      "relative_score": 0,
+      "consistency_score": 100.0,
+      "final_score": 65.0,
+      "difficulty": "hard",
+      "needs_practice": false
+    },
+    {
+      "phoneme": "ɪ",
+      "count": 2,
+      "avg_gop": -27.68,
+      "adjusted_gop": -27.68,
+      "std_gop": 2.57,
+      "absolute_rating": "excellent",
+      "relative_score": 73.8,
+      "consistency_score": 48.6,
+      "final_score": 76.0,
+      "difficulty": "medium",
+      "needs_practice": false
+    },
+    {
+      "phoneme": "d",
+      "count": 1,
+      "avg_gop": -28.45,
+      "adjusted_gop": -28.45,
+      "std_gop": 0,
+      "absolute_rating": "excellent",
+      "relative_score": 60.6,
+      "consistency_score": 100.0,
+      "final_score": 84.2,
+      "difficulty": "medium",
+      "needs_practice": false
+    },
+    {
+      "phoneme": "b",
+      "count": 2,
+      "avg_gop": -27.89,
+      "adjusted_gop": -27.89,
+      "std_gop": 0.61,
+      "absolute_rating": "excellent",
+      "relative_score": 70.3,
+      "consistency_score": 87.7,
+      "final_score": 84.5,
+      "difficulty": "medium",
+      "needs_practice": false
+    },
+    {
+      "phoneme": "tʰ",
+      "count": 3,
+      "avg_gop": -27.4,
+      "adjusted_gop": -24.66,
+      "std_gop": 0.96,
+      "absolute_rating": "excellent",
+      "relative_score": 78.6,
+      "consistency_score": 80.8,
+      "final_score": 85.7,
+      "difficulty": "medium",
+      "needs_practice": false
+    },
+    {
+      "phoneme": "ɛ",
+      "count": 3,
+      "avg_gop": -27.61,
+      "adjusted_gop": -27.61,
+      "std_gop": 0.32,
+      "absolute_rating": "excellent",
+      "relative_score": 75.2,
+      "consistency_score": 93.6,
+      "final_score": 87.7,
+      "difficulty": "medium",
+      "needs_practice": false
+    },
+    {
+      "phoneme": "n",
+      "count": 1,
+      "avg_gop": -27.54,
+      "adjusted_gop": -24.79,
+      "std_gop": 0,
+      "absolute_rating": "excellent",
+      "relative_score": 76.3,
+      "consistency_score": 100.0,
+      "final_score": 89.7,
+      "difficulty": "easy",
+      "needs_practice": false
+    },
+    {
+      "phoneme": "uː",
+      "count": 1,
+      "avg_gop": -27.55,
+      "adjusted_gop": -24.79,
+      "std_gop": 0,
+      "absolute_rating": "excellent",
+      "relative_score": 76.2,
+      "consistency_score": 100.0,
+      "final_score": 89.7,
+      "difficulty": "easy",
+      "needs_practice": false
+    },
+    {
+      "phoneme": "t",
+      "count": 3,
+      "avg_gop": -27.2,
+      "adjusted_gop": -27.2,
+      "std_gop": 0.35,
+      "absolute_rating": "excellent",
+      "relative_score": 82.2,
+      "consistency_score": 93.0,
+      "final_score": 90.0,
+      "difficulty": "medium",
+      "needs_practice": false
+    },
+    {
+      "phoneme": "s",
+      "count": 3,
+      "avg_gop": -26.49,
+      "adjusted_gop": -26.49,
+      "std_gop": 1.06,
+      "absolute_rating": "excellent",
+      "relative_score": 94.3,
+      "consistency_score": 78.7,
+      "final_score": 90.7,
+      "difficulty": "medium",
+      "needs_practice": false
+    },
+    {
+      "phoneme": "ə",
+      "count": 1,
+      "avg_gop": -27.05,
+      "adjusted_gop": -24.35,
+      "std_gop": 0,
+      "absolute_rating": "excellent",
+      "relative_score": 84.7,
+      "consistency_score": 100.0,
+      "final_score": 92.6,
+      "difficulty": "medium",
+      "needs_practice": false
+    },
+    {
+      "phoneme": "l",
+      "count": 1,
+      "avg_gop": -26.16,
+      "adjusted_gop": -23.54,
+      "std_gop": 0,
+      "absolute_rating": "excellent",
+      "relative_score": 100,
+      "consistency_score": 100.0,
+      "final_score": 98.0,
+      "difficulty": "easy",
+      "needs_practice": false
+    }
+  ],
+  "global_stats": {
+    "global_mean": -27.750830555555556,
+    "global_median": -27.5447,
+    "global_std": 1.466743284462838,
+    "best_phoneme_score": -26.1567,
+    "worst_phoneme_score": -31.9923
+  },
+  "context_insights": {
+    "word_position_analysis": {},
+    "coarticulation_effects": [
+      {
+        "phoneme": "s",
+        "context": "ɛ-s-t",
+        "note": "s vor t ist artikulatorisch anspruchsvoll"
+      },
+      {
+        "phoneme": "s",
+        "context": "ɛ-s-t",
+        "note": "s vor t ist artikulatorisch anspruchsvoll"
+      },
+      {
+        "phoneme": "s",
+        "context": "ɛ-s-t",
+        "note": "s vor t ist artikulatorisch anspruchsvoll"
+      }
+    ],
+    "duration_outliers": []
+  },
+  "raw_data": [
+    {
+      "phoneme": "tʰ",
+      "start": 0.0,
+      "end": 0.1,
+      "gop_score": -26.4522
+    },
+    {
+      "phoneme": "ɛ",
+      "start": 0.1,
+      "end": 0.21,
+      "gop_score": -27.4575
+    },
+    {
+      "phoneme": "s",
+      "start": 0.21,
+      "end": 0.34,
+      "gop_score": -27.5561
+    },
+    {
+      "phoneme": "t",
+      "start": 0.34,
+      "end": 0.38,
+      "gop_score": -27.2725
+    },
+    {
+      "phoneme": "tʰ",
+      "start": 0.6,
+      "end": 0.7,
+      "gop_score": -28.3725
+    },
+    {
+      "phoneme": "ɛ",
+      "start": 0.7,
+      "end": 0.82,
+      "gop_score": -27.9706
+    },
+    {
+      "phoneme": "s",
+      "start": 0.82,
+      "end": 0.93,
+      "gop_score": -26.4881
+    },
+    {
+      "phoneme": "t",
+      "start": 0.93,
+      "end": 0.99,
+      "gop_score": -26.812
+    },
+    {
+      "phoneme": "tʰ",
+      "start": 1.72,
+      "end": 1.82,
+      "gop_score": -27.3874
+    },
+    {
+      "phoneme": "ɛ",
+      "start": 1.82,
+      "end": 1.94,
+      "gop_score": -27.3899
+    },
+    {
+      "phoneme": "s",
+      "start": 1.94,
+      "end": 2.11,
+      "gop_score": -25.4264
+    },
+    {
+      "phoneme": "t",
+      "start": 2.11,
+      "end": 2.21,
+      "gop_score": -27.5015
+    },
+    {
+      "phoneme": "ɪ",
+      "start": 2.33,
+      "end": 2.45,
+      "gop_score": -29.4998
+    },
+    {
+      "phoneme": "ç",
+      "start": 2.45,
+      "end": 2.49,
+      "gop_score": -31.9923
+    },
+    {
+      "phoneme": "b",
+      "start": 2.49,
+      "end": 2.62,
+      "gop_score": -28.3219
+    },
+    {
+      "phoneme": "ɪ",
+      "start": 2.62,
+      "end": 2.66,
+      "gop_score": -25.8684
+    },
+    {
+      "phoneme": "n",
+      "start": 2.66,
+      "end": 2.77,
+      "gop_score": -27.5412
+    },
+    {
+      "phoneme": "d",
+      "start": 2.77,
+      "end": 2.82,
+      "gop_score": -28.4546
+    },
+    {
+      "phoneme": "uː",
+      "start": 2.82,
+      "end": 2.99,
+      "gop_score": -27.5482
+    },
+    {
+      "phoneme": "b",
+      "start": 2.99,
+      "end": 3.02,
+      "gop_score": -27.4525
+    },
+    {
+      "phoneme": "ə",
+      "start": 3.02,
+      "end": 3.06,
+      "gop_score": -27.0501
+    },
+    {
+      "phoneme": "l",
+      "start": 3.06,
+      "end": 3.11,
+      "gop_score": -26.1567
+    }
+  ]
+}
