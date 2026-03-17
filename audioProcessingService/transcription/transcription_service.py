@@ -2,8 +2,9 @@ import whisper
 import os
 import re
 
-# Modell einmalig laden
-print("Lade Whisper Modell...")
+# Load model once during startup
+print("Loading Whisper Model...")
+
 # whisper_model = whisper.load_model("base")
 whisper_model = whisper.load_model("medium")
 
@@ -31,19 +32,19 @@ def transcribe_and_create_lab(audio_path: str) -> str:
     if not os.path.exists(audio_path):
         raise FileNotFoundError(f"Audio-Datei nicht gefunden: {audio_path}")
 
-    # Transkribieren
-    result = whisper_model.transcribe(audio_path, language="de", fp16=False)    # fp16 => nur auf CPU
+    # transcribe
+    result = whisper_model.transcribe(audio_path, language="de", fp16=False)    # Important: fp16 => only on CPU
     text = result['text'].strip()
 
     text = digits_to_words(text)
 
-    # Text bereinigen (Satzzeichen entfernen für MFA)
+    # clean text (remove punctuation and lowercase)
     clean_text = re.sub(r'[.#?!,]', '', text).lower()
 
-    # .lab Datei im selben Ordner wie das Audio erstellen
+    # .lab file in same folder as audio file
     lab_path = os.path.splitext(audio_path)[0] + ".lab"
 
-    print("LapPath: ", lab_path)
+    print("LabPath: ", lab_path)
     
     with open(lab_path, "w", encoding="utf-8") as f:
         f.write(clean_text)

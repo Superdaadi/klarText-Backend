@@ -1,14 +1,4 @@
-"""
-Main Entry Point für das intelligente Aussprache-Feedback-System
-
-Verwendung:
-    python main.py <input_json_path> [--output-dir OUTPUT_DIR] [--user-feedback FEEDBACK_TYPE]
-    
-Beispiele:
-    python main.py gop_results.json
-    python main.py gop_results.json --output-dir ./feedback_output
-    python main.py gop_results.json --user-feedback too_strict
-"""
+# Feedback Service
 
 import json
 import argparse
@@ -23,41 +13,39 @@ from feedback.adaptive_thresholds import AdaptiveThresholds
 
 
 def load_gop_data(filepath: str) -> list:
-    """Lädt GOP-Daten aus JSON-Datei"""
     with open(filepath, 'r', encoding='utf-8') as f:
         return json.load(f)
 
 
 def save_results(output_dir: str, analysis: dict, feedback: dict):
-    """Speichert alle Ergebnisse"""
     os.makedirs(output_dir, exist_ok=True)
     
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     
-    # 1. Vollständige Analyse (für Entwickler/Debug)
+    # 1. full analysis
     analysis_path = os.path.join(output_dir, f"analysis_{timestamp}.json")
     with open(analysis_path, 'w', encoding='utf-8') as f:
         json.dump(analysis, f, ensure_ascii=False, indent=2)
     
-    # 2. Nutzerfreundliches Feedback (für Frontend)
+    # 2. user feedback
     feedback_path = os.path.join(output_dir, f"feedback_{timestamp}.json")
     with open(feedback_path, 'w', encoding='utf-8') as f:
         json.dump(feedback, f, ensure_ascii=False, indent=2)
     
-    # 3. Text-Version (für schnelles Lesen)
+    # 3. text version
     generator = FeedbackGenerator()
     text_feedback = generator.generate_text_feedback(feedback)
     text_path = os.path.join(output_dir, f"feedback_{timestamp}.txt")
     with open(text_path, 'w', encoding='utf-8') as f:
         f.write(text_feedback)
     
-    # 4. Heatmap-Daten für Visualisierung
+    # 4. heatmap data
     heatmap = generate_heatmap(analysis["raw_data"])
     heatmap_path = os.path.join(output_dir, f"heatmap_{timestamp}.json")
     with open(heatmap_path, 'w', encoding='utf-8') as f:
         json.dump(heatmap, f, ensure_ascii=False, indent=2)
     
-    # Erstelle auch "latest" Symlinks (ohne Timestamp)
+    # 5. update latest files
     latest_files = {
         "analysis.json": analysis_path,
         "feedback.json": feedback_path,
@@ -67,10 +55,10 @@ def save_results(output_dir: str, analysis: dict, feedback: dict):
     
     for latest_name, timestamped_path in latest_files.items():
         latest_path = os.path.join(output_dir, latest_name)
-        # Entferne alte Datei falls vorhanden
+        # overwrite old
         if os.path.exists(latest_path):
             os.remove(latest_path)
-        # Kopiere neue Datei
+        # copy new
         with open(timestamped_path, 'r', encoding='utf-8') as src:
             with open(latest_path, 'w', encoding='utf-8') as dst:
                 dst.write(src.read())
@@ -84,20 +72,14 @@ def save_results(output_dir: str, analysis: dict, feedback: dict):
 
 
 def generate_heatmap(raw_data: list) -> list:
-    """
-    Generiert Heatmap-Daten für zeitbasierte Visualisierung
-    
-    Returns:
-        Liste mit {phoneme, start, end, score, color}
-    """
     heatmap = []
     
     for item in raw_data:
-        # Konvertiere GOP zu 0-100 Score
+        # GOP to 0-100 score
         gop = item["gop_score"]
         score = gop_to_score(gop)
         
-        # Farbe basierend auf Score
+        # score colors
         if score >= 75:
             color = "green"
         elif score >= 60:
@@ -120,13 +102,12 @@ def generate_heatmap(raw_data: list) -> list:
 
 
 def gop_to_score(gop: float, min_gop: float = -45, max_gop: float = -25) -> float:
-    """Erweitert den Bereich, sodass -25 schon für 100% reicht statt -20"""
     gop = max(min(gop, max_gop), min_gop)
     return ((gop - min_gop) / (max_gop - min_gop)) * 100
 
 
 def print_summary(feedback: dict):
-    """Gibt Zusammenfassung auf der Konsole aus"""
+    # Gibt Zusammenfassung auf der Konsole aus
     print("\n" + "="*70)
     print(f"  {feedback['headline']}")
     print("="*70)
@@ -137,7 +118,7 @@ def print_summary(feedback: dict):
     print(f"\n💬 {feedback['encouragement']}")
     print()
     
-    # Quick Stats
+    # stats
     meta = feedback['metadata']
     print(f"📈 Verteilung:")
     print(f"   Ausgezeichnet: {meta['distribution']['excellent']}")
@@ -156,11 +137,11 @@ def print_summary(feedback: dict):
 
 
 def main(input_path: str, output_path: str, config: str, text: str, userFeedback: str = "", quiet: bool = False):
-    # Interne Hilfsfunktion für sauberes Logging
+    # helper log
     def log(msg):
         if not quiet: print(msg)
 
-    # 1. Validierung
+    # 1. Validation
     for path in [input_path, config]:
         if not os.path.exists(path):
             log(f"❌ Fehler: {path} nicht gefunden.")
@@ -168,13 +149,13 @@ def main(input_path: str, output_path: str, config: str, text: str, userFeedback
     
     os.makedirs(output_path, exist_ok=True)
 
-    # 2. Adaptives Feedback (Thresholds)
+    # 2. Adaptive thresholds
     if userFeedback:
         tm = AdaptiveThresholds(config)
         tm.record_user_feedback(userFeedback)
         log(f"✅ Feedback ({userFeedback}) verarbeitet. Neue Werte: {tm.get_thresholds()}\n")
     
-    # 3. Pipeline: Laden -> Analysieren -> Generieren
+    # 3. Pipeline: Load -> Analyze -> Generate
     log("🔄 Verarbeite Daten...")
     try:
         gop_data = load_gop_data(input_path)
@@ -182,7 +163,7 @@ def main(input_path: str, output_path: str, config: str, text: str, userFeedback
         # log(analysis)
         feedback = FeedbackGenerator(config).generate_feedback(analysis, text)
         
-        # 4. Speichern und Abschluss
+        # 4. Results
         saved_paths = save_results(output_path, analysis, feedback)
         
         log(f"✅ Erfolg! {len(gop_data)} Phoneme analysiert.")

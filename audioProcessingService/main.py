@@ -11,12 +11,12 @@ from transcription.transcription_service import transcribe_and_create_lab
 from mfa.test_alignment import runMFAall
 from feedback.feedback_service import runFeedback
 
-# --- Logging konfigurieren ---
+# Logging
 logger = logging.getLogger("uvicorn.error")
 logger.setLevel(logging.INFO)
 
 
-# --- Directories ---
+# Folders
 UPLOAD_DIR = "uploads"
 os.makedirs(UPLOAD_DIR, exist_ok=True)
 
@@ -24,7 +24,7 @@ AUDIO_INPUT_BASE = os.path.join(os.getcwd(), "audio_input")
 os.makedirs(AUDIO_INPUT_BASE, exist_ok=True)
 
 
-# --- FastAPI App ---
+# API init
 app = FastAPI(
     title="Audio Processing Service",
     description="Normalize & clean audio files",
@@ -63,29 +63,22 @@ async def process_audio_endpoint(file: UploadFile = File(...)):
 
         print("Dir: " + request_dir)
 
-        # --- Modul 1: Audio verarbeiten ---
-        # WICHTIG: process_audio sollte die Datei im request_dir verarbeiten
+        # Modul 1: Audio Processing
         audio_info = process_audio(target_file_path)
         actual_path = audio_info["audio_path"]
         print(f"✅ Audio vorbereitet: {actual_path}")
 
-        # --- Modul 2: Transkription erstellen ---
-        # Erstellt die .lab Datei direkt neben der .wav im UUID-Ordner
+        # Modul 2: Transcription
         erkannter_text = transcribe_and_create_lab(actual_path)
         print(f"✅ Text extrahiert: {erkannter_text}")
 
-        # --- Modul 3: MFA Alignment ---
-        # Wir geben den spezifischen UUID-Ordner an
-        # alignment_out bekommt ebenfalls einen UUID-Unterordner
+        # Modul 3: MFA Alignment
         alignment_out = os.path.join(os.getcwd(), "audio_input", request_id)
         os.makedirs(alignment_out, exist_ok=True)
-        
-        # Wir übergeben das Verzeichnis (dirname), nicht die Datei
         runMFAall(os.path.dirname(actual_path), alignment_out)
         print(f"✅ MFA Alignment abgeschlossen in: {alignment_out}")
 
-        # --- Modul 4: Feedback ---
-        # Hier musst du ggf. die Pfade an runFeedback übergeben
+        # Modul 4: Feedback
         runFeedback(alignment_out, erkannter_text) 
 
     except Exception as e:

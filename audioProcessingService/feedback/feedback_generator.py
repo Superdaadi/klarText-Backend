@@ -210,7 +210,7 @@ class FeedbackGenerator:
     
     
     def _generate_encouragement(self, overall: Dict) -> str:
-        """Generiert motivierende Ermutigung"""
+        """motivierende Ermutigung"""
         score = overall["weighted_score"]
         
         encouragements = {
