@@ -14,3 +14,5 @@ dev-key.pem
 __pycache__
 *.pyc
 *.lab
+
+audio_input

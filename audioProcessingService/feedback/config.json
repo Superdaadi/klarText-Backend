@@ -1,0 +1,88 @@
+{
+  "version": "1.0.0",
+  "adaptive_thresholds": {
+    "enabled": true,
+    "learning_rate": 0.5,
+    "history_weight": 0.7,
+    "current": {
+      "excellent": -80.0,
+      "good": -85.0,
+      "ok": -90.0,
+      "needs_work": -95.0
+    },
+    "min_bounds": {
+      "excellent": -24.0,
+      "good": -26.0,
+      "ok": -28.0,
+      "needs_work": -31.0
+    },
+    "max_bounds": {
+      "excellent": -80.0,
+      "good": -85.0,
+      "ok": -90.0,
+      "needs_work": -95.0
+    }
+  },
+  "phoneme_difficulty": {
+    "easy": [
+      "a",
+      "m",
+      "n",
+      "l",
+      "iː",
+      "uː"
+    ],
+    "medium": [
+      "t",
+      "d",
+      "s",
+      "z",
+      "p",
+      "b",
+      "k",
+      "g",
+      "ɛ",
+      "ɔ",
+      "ɪ",
+      "ʊ"
+    ],
+    "hard": [
+      "ʁ",
+      "ç",
+      "x",
+      "ʃ",
+      "ts",
+      "pf",
+      "ø",
+      "y",
+      "œ",
+      "ʏ"
+    ],
+    "very_hard": [
+      "tʃ",
+      "ʒ",
+      "ŋ",
+      "øː",
+      "yː",
+      "ɐ"
+    ]
+  },
+  "feedback_style": {
+    "strictness": 0.5,
+    "positivity_bias": 0.3,
+    "detail_level": "medium",
+    "encouragement": true,
+    "rating_thresholds": {
+      "excellent": 75,
+      "good": 65,
+      "solid": 55,
+      "developing": 45
+    }
+  },
+  "user_preferences": {
+    "feedback_too_strict_count": 3,
+    "feedback_too_loose_count": 0,
+    "feedback_just_right_count": 0,
+    "last_adjustment": "2026-02-25T16:52:15.088809"
+  }
+}

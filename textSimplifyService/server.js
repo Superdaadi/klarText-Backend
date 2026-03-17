@@ -1,18 +1,22 @@
 import express from "express";
 import cors from 'cors';
 import fs from "fs";
+import https from "https";
 
 import { connectMongo } from "./middleware/db.js";
 
 import simplifyRouter from './routes/simplifyRoutes.js';
 
 
-
 const app = express();
 
+const options = {
+    key: fs.readFileSync('./key.pem'),
+    cert: fs.readFileSync('./cert.pem')
+};
 
 app.use(cors({
-  origin: 'http://localhost:4200', // Allow only your frontend
+  origin: '*',
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
@@ -49,17 +53,20 @@ async function preloadModel() {
 
 
 
-
-
-
 // ------------------------------
 // Server starten
 // ------------------------------
-app.listen(3000, async () => {
-  console.log("Server running on http://localhost:3000");
-  
-  await preloadModel(); 
+https.createServer(options, app).listen(3000, async () => {
+    console.log("🔒 Sicherer Server läuft auf https://localhost:3000");
+
+    await preloadModel(); 
 });
+
+
+/*app.listen(3000, async () => {
+    console.log("Server running on https://localhost:3000");
+  
+});*/
 
 
 

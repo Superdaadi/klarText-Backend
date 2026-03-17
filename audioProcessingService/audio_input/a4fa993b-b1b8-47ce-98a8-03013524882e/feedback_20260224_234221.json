@@ -1,0 +1,61 @@
+{
+  "text": "test test test ich bin double",
+  "date": "2026-02-24T23:42:21.675852",
+  "headline": "🌟 Ausgezeichnet! (Note: A)",
+  "summary": "Deine Aussprache ist schon sehr gut! Von 12 analysierten Lauten hast du 12 bereits sehr gut gemeistert.",
+  "overall_score": 86.5,
+  "grade": "A",
+  "encouragement": "Weiter so! Du hast die schwierigsten Teile bereits gemeistert.",
+  "strengths": [
+    {
+      "phoneme": "uː",
+      "score": 89.7,
+      "count": 1,
+      "label": "Sehr gut",
+      "consistency": "Sehr konsistent"
+    },
+    {
+      "phoneme": "t",
+      "score": 90.0,
+      "count": 3,
+      "label": "Sehr gut",
+      "consistency": "Sehr konsistent"
+    },
+    {
+      "phoneme": "s",
+      "score": 90.7,
+      "count": 3,
+      "label": "Sehr gut",
+      "consistency": "Konsistent"
+    },
+    {
+      "phoneme": "ə",
+      "score": 92.6,
+      "count": 1,
+      "label": "Sehr gut",
+      "consistency": "Sehr konsistent"
+    },
+    {
+      "phoneme": "l",
+      "score": 98.0,
+      "count": 1,
+      "label": "Sehr gut",
+      "consistency": "Sehr konsistent"
+    }
+  ],
+  "weaknesses": [],
+  "exercises": [],
+  "insights": [
+    "🔗 Einige Lautkombinationen sind besonders anspruchsvoll – übe diese Übergänge gezielt."
+  ],
+  "metadata": {
+    "total_phonemes": 12,
+    "avg_gop": -27.54,
+    "distribution": {
+      "excellent": 12,
+      "good": 0,
+      "ok": 0,
+      "needs_work": 0
+    }
+  }
+}

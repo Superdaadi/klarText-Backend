@@ -3,26 +3,19 @@ import os
 import textgrid
 import json
 import re
-from num2words import num2words
 import torch
 import librosa
 from transformers import Wav2Vec2ForCTC, Wav2Vec2Processor
+import soundfile as sf
 
 def clean_text(text):
     # 1. Mehrfache Leerzeichen auf ein einzelnes reduzieren
     text = re.sub(r'\s+', ' ', text).strip()
     
-    # 2. Zahlen finden und umwandeln
-    def replace_num(match):
-        number = match.group()
-        return num2words(int(number), lang='de')
-    
-    text = re.sub(r'\d+', replace_num, text)
-    
-    # 3. Satzzeichen entfernen (außer Leerzeichen, Umlaute bleiben)
+    # 2. Satzzeichen entfernen (außer Leerzeichen, Umlaute bleiben)
     text = re.sub(r'[^\w\s]', '', text)
     
-    # 4. Alles in Kleinbuchstaben und überschüssige Leerzeichen entfernen
+    # 3. Alles in Kleinbuchstaben und überschüssige Leerzeichen entfernen
     return text.lower().strip()
 
 
@@ -30,12 +23,23 @@ def clean_text(text):
 def run_mfa_alignment(input_dir, output_dir):
     # Bereinige die .lab Datei vor dem Start
     for file in os.listdir(input_dir):
+        if file.endswith(".wav"):
+            path = os.path.join(input_dir, file)
+            data, samplerate = sf.read(path)
+            # MFA bevorzugt 16000Hz Mono
+            if samplerate != 16000:
+                print(f"⚠️ Warnung: {file} hat {samplerate}Hz. MFA erwartet oft 16000Hz.")
+        
         if file.endswith(".lab"):
             path = os.path.join(input_dir, file)
             with open(path, 'r', encoding='utf-8') as f:
-                content = f.read()
+                raw_content = f.read()
+            cleaned = clean_text(raw_content)
+            if not cleaned:
+                print(f"❌ Fehler: {file} ist nach der Reinigung leer!")
+                return
             with open(path, 'w', encoding='utf-8') as f:
-                f.write(clean_text(content))
+                f.write(cleaned)
 
     # MFA Befehl mit erhöhtem Beam und Logging
     cmd = [
@@ -87,7 +91,7 @@ def export_phonemes_to_json(tg_path):
 
 
 def parse_textgrid(file_path):
-    with open(file_path, 'r', encoding='utf-8') as f:
+    with open(f"{file_path}_processed", 'r', encoding='utf-8') as f:
         content = f.read()
 
     tiers = {}
@@ -182,6 +186,44 @@ def get_gop_scores(audio_path, phoneme_intervals):
 
 
 
+def runMFAall(INPUT, OUTPUT):
+    try:
+        # 1. Schritt: Alignment mit MFA
+        run_mfa_alignment(INPUT, OUTPUT)
+        
+        # Pfad zur generierten TextGrid Datei
+        # Hinweis: MFA benennt die Datei oft nach dem Namen des Audio-Files
+        tg_file = os.path.join(OUTPUT, "test_processed.TextGrid")
+        
+        if os.path.exists(tg_file):
+            # 2. Schritt: Phoneme extrahieren (Intervalle)
+            phoneme_intervals = export_phonemes_to_json(tg_file)
+            
+            # 3. Schritt: GOP-Scores berechnen
+            # Wir übergeben das Original-Audio und die extrahierten Intervalle
+            audio_file = os.path.join(INPUT, "test_processed.wav")
+            print(f"🔊 Berechne GOP-Scores für {audio_file}...")
+            
+            results_with_gop = get_gop_scores(audio_file, phoneme_intervals)
+            
+            # 4. Schritt: Speichern der Ergebnisse
+            gop_output_path = os.path.join(OUTPUT, "gop_results.json")
+            with open(gop_output_path, "w", encoding="utf-8") as f:
+                json.dump(results_with_gop, f, indent=4, ensure_ascii=False)
+            
+            print(f"✅ Erfolg! GOP-Scores wurden hier gespeichert: {gop_output_path}")
+            
+            # Optional: Kurze Vorschau in der Konsole
+            for entry in results_with_gop[:3]:
+                print(f"Phonem: {entry['phoneme']} | Score: {entry.get('gop_score', 'N/A')}")
+
+        else:
+            print(f"❌ Fehler: TextGrid wurde unter {tg_file} nicht gefunden. Prüfe die MFA-Logs.")
+            
+    except Exception as e:
+        print(f"💥 Ein Fehler ist aufgetreten: {e}")
+
+
 
 
 
@@ -192,8 +234,8 @@ model = Wav2Vec2ForCTC.from_pretrained(model_name)
 
 
 # --- MAIN ---
-INPUT = "./audio_input"
-OUTPUT = "./alignment_output"
+INPUT = "./../audio_input"
+OUTPUT = "./../alignment_output"
 
 if __name__ == "__main__":
     try:
@@ -202,7 +244,7 @@ if __name__ == "__main__":
         
         # Pfad zur generierten TextGrid Datei
         # Hinweis: MFA benennt die Datei oft nach dem Namen des Audio-Files
-        tg_file = os.path.join(OUTPUT, "test.TextGrid")
+        tg_file = os.path.join(OUTPUT, "test_processed.TextGrid")
         
         if os.path.exists(tg_file):
             # 2. Schritt: Phoneme extrahieren (Intervalle)
@@ -210,7 +252,7 @@ if __name__ == "__main__":
             
             # 3. Schritt: GOP-Scores berechnen
             # Wir übergeben das Original-Audio und die extrahierten Intervalle
-            audio_file = os.path.join(INPUT, "test.wav")
+            audio_file = os.path.join(INPUT, "test_processed.wav")
             print(f"🔊 Berechne GOP-Scores für {audio_file}...")
             
             results_with_gop = get_gop_scores(audio_file, phoneme_intervals)

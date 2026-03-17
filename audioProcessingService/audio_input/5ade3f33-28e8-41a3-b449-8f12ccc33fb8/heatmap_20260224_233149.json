@@ -1,0 +1,186 @@
+[
+  {
+    "phoneme": "tʰ",
+    "start": 0.7,
+    "end": 0.77,
+    "gop_score": -26.91,
+    "score_0_100": 90.4,
+    "color": "green"
+  },
+  {
+    "phoneme": "ɛ",
+    "start": 0.77,
+    "end": 0.95,
+    "gop_score": -27.79,
+    "score_0_100": 86.1,
+    "color": "green"
+  },
+  {
+    "phoneme": "s",
+    "start": 0.95,
+    "end": 1.07,
+    "gop_score": -26.35,
+    "score_0_100": 93.3,
+    "color": "green"
+  },
+  {
+    "phoneme": "t",
+    "start": 1.07,
+    "end": 1.23,
+    "gop_score": -26.12,
+    "score_0_100": 94.4,
+    "color": "green"
+  },
+  {
+    "phoneme": "tʰ",
+    "start": 1.34,
+    "end": 1.4,
+    "gop_score": -27.6,
+    "score_0_100": 87.0,
+    "color": "green"
+  },
+  {
+    "phoneme": "ɛ",
+    "start": 1.4,
+    "end": 1.57,
+    "gop_score": -27.3,
+    "score_0_100": 88.5,
+    "color": "green"
+  },
+  {
+    "phoneme": "s",
+    "start": 1.57,
+    "end": 1.7,
+    "gop_score": -25.39,
+    "score_0_100": 98.0,
+    "color": "green"
+  },
+  {
+    "phoneme": "t",
+    "start": 1.7,
+    "end": 1.73,
+    "gop_score": -23.91,
+    "score_0_100": 100.0,
+    "color": "green"
+  },
+  {
+    "phoneme": "tʰ",
+    "start": 1.99,
+    "end": 2.08,
+    "gop_score": -28.21,
+    "score_0_100": 83.9,
+    "color": "green"
+  },
+  {
+    "phoneme": "ɛ",
+    "start": 2.08,
+    "end": 2.23,
+    "gop_score": -28.28,
+    "score_0_100": 83.6,
+    "color": "green"
+  },
+  {
+    "phoneme": "s",
+    "start": 2.23,
+    "end": 2.39,
+    "gop_score": -25.83,
+    "score_0_100": 95.8,
+    "color": "green"
+  },
+  {
+    "phoneme": "t",
+    "start": 2.39,
+    "end": 2.42,
+    "gop_score": -25.77,
+    "score_0_100": 96.1,
+    "color": "green"
+  },
+  {
+    "phoneme": "tʰ",
+    "start": 2.67,
+    "end": 2.76,
+    "gop_score": -27.51,
+    "score_0_100": 87.4,
+    "color": "green"
+  },
+  {
+    "phoneme": "ɛ",
+    "start": 2.76,
+    "end": 2.93,
+    "gop_score": -27.82,
+    "score_0_100": 85.9,
+    "color": "green"
+  },
+  {
+    "phoneme": "s",
+    "start": 2.93,
+    "end": 3.06,
+    "gop_score": -26.16,
+    "score_0_100": 94.2,
+    "color": "green"
+  },
+  {
+    "phoneme": "t",
+    "start": 3.06,
+    "end": 3.21,
+    "gop_score": -27.15,
+    "score_0_100": 89.2,
+    "color": "green"
+  },
+  {
+    "phoneme": "ɪ",
+    "start": 3.59,
+    "end": 3.72,
+    "gop_score": -30.08,
+    "score_0_100": 74.6,
+    "color": "yellow"
+  },
+  {
+    "phoneme": "ç",
+    "start": 3.72,
+    "end": 3.96,
+    "gop_score": -30.21,
+    "score_0_100": 74.0,
+    "color": "yellow"
+  },
+  {
+    "phoneme": "b",
+    "start": 3.96,
+    "end": 4.05,
+    "gop_score": -29.43,
+    "score_0_100": 77.8,
+    "color": "green"
+  },
+  {
+    "phoneme": "ɪ",
+    "start": 4.05,
+    "end": 4.12,
+    "gop_score": -28.25,
+    "score_0_100": 83.8,
+    "color": "green"
+  },
+  {
+    "phoneme": "n",
+    "start": 4.12,
+    "end": 4.33,
+    "gop_score": -28.84,
+    "score_0_100": 80.8,
+    "color": "green"
+  },
+  {
+    "phoneme": "d",
+    "start": 4.38,
+    "end": 4.44,
+    "gop_score": -29.36,
+    "score_0_100": 78.2,
+    "color": "green"
+  },
+  {
+    "phoneme": "aː",
+    "start": 4.44,
+    "end": 4.59,
+    "gop_score": -27.0,
+    "score_0_100": 90.0,
+    "color": "green"
+  }
+]

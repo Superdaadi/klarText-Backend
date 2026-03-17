@@ -1,0 +1,61 @@
+{
+  "text": "test test ich bin david",
+  "date": "2026-02-16T12:21:38.589097",
+  "headline": "🌟 Ausgezeichnet! (Note: A)",
+  "summary": "Deine Aussprache ist schon sehr gut! Von 10 analysierten Lauten hast du 10 bereits sehr gut gemeistert.",
+  "overall_score": 77.8,
+  "grade": "A",
+  "encouragement": "Fantastisch! Konzentriere dich jetzt auf die Details für den letzten Schliff.",
+  "strengths": [
+    {
+      "phoneme": "ç",
+      "score": 78.0,
+      "count": 1,
+      "label": "Gut",
+      "consistency": "Sehr konsistent"
+    },
+    {
+      "phoneme": "n",
+      "score": 78.0,
+      "count": 1,
+      "label": "Gut",
+      "consistency": "Sehr konsistent"
+    },
+    {
+      "phoneme": "ɛ",
+      "score": 78.6,
+      "count": 2,
+      "label": "Gut",
+      "consistency": "Sehr konsistent"
+    },
+    {
+      "phoneme": "s",
+      "score": 82.3,
+      "count": 2,
+      "label": "Gut",
+      "consistency": "Sehr konsistent"
+    },
+    {
+      "phoneme": "tʰ",
+      "score": 95.8,
+      "count": 2,
+      "label": "Sehr gut",
+      "consistency": "Sehr konsistent"
+    }
+  ],
+  "weaknesses": [],
+  "exercises": [],
+  "insights": [
+    "🔗 Einige Lautkombinationen sind besonders anspruchsvoll – übe diese Übergänge gezielt."
+  ],
+  "metadata": {
+    "total_phonemes": 10,
+    "avg_gop": -27.36,
+    "distribution": {
+      "excellent": 10,
+      "good": 0,
+      "ok": 0,
+      "needs_work": 0
+    }
+  }
+}

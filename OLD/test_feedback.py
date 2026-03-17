@@ -8,8 +8,8 @@ import os
 # -----------------------------
 
 # GOP-Schwellen (anpassbar!)
-GOOD_THRESHOLD = -25
-OK_THRESHOLD = -29
+GOOD_THRESHOLD = -28.0
+OK_THRESHOLD = -30.5
 
 # Artikulationstipps pro Phonem (Deutsch-fokussiert)
 PHONEME_TIPS = {

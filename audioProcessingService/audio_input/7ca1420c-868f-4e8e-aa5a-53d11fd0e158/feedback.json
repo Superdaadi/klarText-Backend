@@ -1,0 +1,54 @@
+{
+  "text": "test test test und svagol",
+  "date": "2026-02-24T20:23:26.218958",
+  "headline": "🌟 Ausgezeichnet! (Note: A)",
+  "summary": "Deine Aussprache ist schon sehr gut! Von 6 analysierten Lauten hast du 6 bereits sehr gut gemeistert.",
+  "overall_score": 81.7,
+  "grade": "A",
+  "encouragement": "Fantastisch! Konzentriere dich jetzt auf die Details für den letzten Schliff.",
+  "strengths": [
+    {
+      "phoneme": "tʰ",
+      "score": 80.7,
+      "count": 3,
+      "label": "Gut",
+      "consistency": "Konsistent"
+    },
+    {
+      "phoneme": "ʊ",
+      "score": 82.0,
+      "count": 1,
+      "label": "Gut",
+      "consistency": "Sehr konsistent"
+    },
+    {
+      "phoneme": "t",
+      "score": 84.6,
+      "count": 4,
+      "label": "Gut",
+      "consistency": "Sehr konsistent"
+    },
+    {
+      "phoneme": "s",
+      "score": 94.9,
+      "count": 3,
+      "label": "Sehr gut",
+      "consistency": "Sehr konsistent"
+    }
+  ],
+  "weaknesses": [],
+  "exercises": [],
+  "insights": [
+    "🔗 Einige Lautkombinationen sind besonders anspruchsvoll – übe diese Übergänge gezielt."
+  ],
+  "metadata": {
+    "total_phonemes": 6,
+    "avg_gop": -27.93,
+    "distribution": {
+      "excellent": 6,
+      "good": 0,
+      "ok": 0,
+      "needs_work": 0
+    }
+  }
+}
