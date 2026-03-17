@@ -12,7 +12,7 @@ CondaMFA
 Python venv
 
 ```bash
-  source venv/bin/activate
+  source venv/bin/activate  
 ```
 
 
