@@ -88,18 +88,6 @@ uvicorn main:app --host 0.0.0.0 --port 8000 --ssl-keyfile ./key.pem --ssl-certfi
 
 ---
 
-## 🔒 Sicherheitshinweis – `.gitignore`
-
-Die generierten Zertifikatsdateien sollten **niemals** in ein öffentliches Repository eingecheckt werden. Füge folgende Einträge zu deiner `.gitignore` hinzu:
-
-```gitignore
-# SSL-Zertifikate
-*.pem
-key.pem
-cert.pem
-```
-
----
 
 ## 📄 Lizenz
 
